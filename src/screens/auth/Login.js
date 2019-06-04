@@ -41,7 +41,7 @@ class Login extends Component {
         const { email, password } = this.state;
         return (
             <ImageBackground source={require('../../assets/Background.png')} style={{ flex: 1 }} resizeMode='cover'>
-                {/* <View style={{ flex: 1, paddingHorizontal: 35, backgroundImage: ''}}>
+                <View style={{ flex: 1, paddingHorizontal: 35, backgroundImage: ''}}>
                     <View style={{ flex: 2.5 }}>
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                             <Image
@@ -118,7 +118,7 @@ class Login extends Component {
                             > Register Now</Text>
                         </View>
                     </View>
-                </View> */}
+                </View>
             </ImageBackground>
         )
     }

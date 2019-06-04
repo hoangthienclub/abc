@@ -17,7 +17,10 @@ const routes = createStackNavigator({
     },
     Register: {
         screen: Register
-    } 
-})
+    }
+}, {
+        mode: 'modal',
+        headerMode: 'none',
+    })
 
 export default createAppContainer(routes);
