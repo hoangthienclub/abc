@@ -109,6 +109,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "00-splash.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "1x"
@@ -124,7 +125,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "LaunchImage-Landscape@2x~ipad_2048x1536.png",
+      "filename" : "00-splash1.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -135,6 +136,14 @@
       "filename" : "LaunchImage~iphone-320x480.png",
       "extent" : "full-screen",
       "scale" : "1x"
+    },
+    {
+      "orientation" : "portrait",
+      "idiom" : "iphone",
+      "filename" : "LaunchImage-568h@2x~iphone_640x1136-1.png",
+      "extent" : "full-screen",
+      "subtype" : "retina4",
+      "scale" : "2x"
     },
     {
       "orientation" : "portrait",
@@ -186,6 +195,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "LaunchImage-Landscape@2x~ipad_2048x1536-1.png",
       "extent" : "full-screen",
       "scale" : "2x"
     }
