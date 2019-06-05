@@ -15,7 +15,7 @@ class App extends Component {
     }
     render() {
         let loggedIn = false
-        if (this.props.auth.user.token) {
+        if (this.props.auth.AccessToken) {
             loggedIn = true
         }
         if (loggedIn) {

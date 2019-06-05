@@ -1,8 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
 import { BASE_URL_USER } from '../utils/constants';
-// import { showErrorMessage } from '../containers/HomePage/actions'
-// import { clearAuthInfo } from '../containers/ProfileWrapper/actions'
 import { setNotification } from '../actions/app/actions';
 
 
@@ -19,21 +17,20 @@ export default function sendRequest(baseURL = BASE_URL_USER, url, options = {}) 
   defaultOptions.baseURL = baseURL;
   const cloneOptions = { ...defaultOptions }
   delete cloneOptions.store
-  console.log(url)
-  console.log(cloneOptions)
   return axios.request(url, { ...cloneOptions, ...options })
     .then(data => {
       if (_.get(data, ['data', 'code']) === 403) {
         // store.dispatch(showErrorMessage('Your session is expired, please login again!'));
-        setTimeout(() => {  
+        setTimeout(() => {
           store.dispatch(clearAuthInfo())
         }, 1500)
       }
       if (_.get(data, ['data', 'code']) === 500) {
         const message = _.get(data, ['data', 'message'])
         store.dispatch(setNotification('danger', message));
+      } else {
+        return _.get(data, ['data', 'data']);
       }
-      // return data
     })
     .catch(err => {
       if (defaultOptions.store) {

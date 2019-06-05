@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import CheckIn from '../checkin';
-import Leaving from '../leaving';
-import Notify from '../notify';
+import { createDrawerNavigator, createAppContainer } from 'react-navigation';
+import Customer from '../customer';
+import LeftMenu from '../leftMenu';
 
-const TabNavigator = createBottomTabNavigator({
-    CheckIn: {
-        screen: CheckIn,
-        navigationOptions: ({ }) => ({
-            title: 'Chấm Công',
-        })
-    },
-    Leaving: {
-        screen: Leaving,
-        navigationOptions: ({ }) => ({
-            title: 'Xin Phép',
-        })
-    },
-    Notify: {
-        screen: Notify,
-        navigationOptions: ({ }) => ({
-            title: 'Thông Báo',
-        })
-    }
+const drawerNavigator = createDrawerNavigator(
+    {
+        Customer: Customer
+    }, {
+        contentComponent: props => <LeftMenu {...props} />
 });
 
-export default createAppContainer(TabNavigator);
+export default createAppContainer(drawerNavigator);

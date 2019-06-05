@@ -7,23 +7,14 @@ import {
 
 import userApi from '../../api/userApi';
 
-const signInSuccess = (user) => ({
+const signInSuccess = (data) => ({
     type: SIGN_IN_SUCCESS,
-    user
+    data
 })
-
-const showSignInConfirmationModal = () => ({
-    type: SHOW_SIGN_IN_CONFIRMATION_MODAL
-})
-
-const signInFailure = () => ({
-    type: SIGN_IN_FAILURE
-})
-
 
 export const signIn = (email, password) => {
     return async dispatch => {
         const data = await userApi.signIn(email, password);
-        console.log(data)
+        dispatch(signInSuccess(data))
     };
 };
