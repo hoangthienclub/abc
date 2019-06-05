@@ -6,9 +6,11 @@ import { connect } from 'react-redux'
 import Auth from './screens/auth';
 import Home from './screens/home';
 import SplashScreen from 'react-native-splash-screen'
+// import Axios from 'axios';
 class App extends Component {
 
     componentDidMount() {
+        // Axios.defaults.headers.common['Authorization'] = token;
     	// do stuff while splash screen is shown
         // After having done stuff (such as async tasks) hide the splash screen
         SplashScreen.hide();
