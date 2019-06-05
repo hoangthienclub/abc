@@ -11,12 +11,13 @@ class ResetPassword extends Component {
     };
 
     backToLogin = () => {
-        this.props.navigation.goBack();
+        this.props.navigation.replace('ForgotPassword');
     }
 
     render() {
         return (
-            <ImageBackground source={require('../../assets/Background.png')} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} resizeMode='cover'>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent'}}>
+            {/* <ImageBackground source={require('../../assets/Background.png')} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} resizeMode='cover'> */}
                 <View style={{backgroundColor: '#fff', width: 700, height: 550, borderRadius: 5 }}>
                     <View style={ styles.header }>
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -74,7 +75,8 @@ class ResetPassword extends Component {
                         </View>
                     </View>
                 </View>
-            </ImageBackground>
+            {/* </ImageBackground> */}
+            </View>
         )
     }
 }

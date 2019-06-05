@@ -19,8 +19,17 @@ const routes = createStackNavigator({
         screen: Register
     }
 }, {
-        mode: 'modal',
-        headerMode: 'none',
-    })
+    mode: 'modal',
+    headerMode: 'none',
+    cardStyle: {
+        backgroundColor: 'transparent'
+    },
+    transparentCard: true,
+    transitionConfig: () => ({ //Does not work
+        containerStyle: {
+            backgroundColor: 'transparent',
+        },
+    }),
+})
 
 export default createAppContainer(routes);

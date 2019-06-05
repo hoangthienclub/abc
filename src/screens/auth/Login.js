@@ -41,7 +41,7 @@ class Login extends Component {
     render() {
         const { email, password } = this.state;
         return (
-            <ImageBackground source={require('../../assets/Background.png')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} resizeMode='cover'>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent'}}>
                 <View style={{ backgroundColor: '#fff', paddingHorizontal: 50, width: 800, height: 550 }}>
                     <View style={{ flex: 2 }}>
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -82,12 +82,12 @@ class Login extends Component {
                         </View>
                         <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'center' }}>
                             <Text style={{ fontSize: 15, color: '#4A90E2', textDecorationLine: 'underline' }}
-                                onPress={() => this.props.navigation.navigate('ForgotPassword')}
+                                onPress={() => this.props.navigation.replace('ForgotPassword')}
                             > Forgot password</Text>
                         </View>
                     </View>
                 </View>
-            </ImageBackground>
+            </View>
         )
     }
 }

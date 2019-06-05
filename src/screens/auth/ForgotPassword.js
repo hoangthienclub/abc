@@ -11,12 +11,12 @@ class ForgotPassword extends Component {
     };
 
     backToLogin = () => {
-        this.props.navigation.goBack();
+        this.props.navigation.replace('Login');
     }
 
     render() {
         return (
-            <ImageBackground source={require('../../assets/Background.png')} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} resizeMode='cover'>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent'}}>
                 <View style={{backgroundColor: '#fff', width: 700, height: 350, borderRadius: 5 }}>
                     <View style={ styles.header }>
                         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -46,17 +46,18 @@ class ForgotPassword extends Component {
                     </View>
                     <View style={{ flex: 2 }}>
                         <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row', paddingHorizontal: 50 }}>
-                            <TouchableOpacity style={{ flex: 1 }}>
+                            <TouchableOpacity style={{ flex: 1 }}
+                                onPress={() => this.props.navigation.replace('ResetPassword')}
+                            >
                                 <View style={ styles.buttonLogin }>
                                     <Text style={{ fontSize: 20, color: "#fff" }}
-                                         onPress={() => this.props.navigation.navigate('ResetPassword')}
                                     >Send</Text>
                                 </View>
                             </TouchableOpacity>
                         </View>
                     </View>
                 </View>
-            </ImageBackground>
+            </View>
         )
     }
 }

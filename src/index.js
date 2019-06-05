@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, Image, ImageBackground } from 'react-native';
 
 import { connect } from 'react-redux'
 
@@ -23,7 +24,9 @@ class App extends Component {
             )
         }
         return (
-            <Auth />
+            <ImageBackground source={require('./assets/Background.png')} style={{ width:'100%', height: '100%' }}>
+                { loggedIn? <Home />: <Auth style={{ backgroundColor: 'transparent'}}/> }
+            </ImageBackground>
         )
     }
 }
