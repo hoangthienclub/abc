@@ -1,23 +1,46 @@
 import {
-    LOG_IN,
-    LOG_IN_SUCCESS,
-    LOG_IN_FAILURE,
+    SIGN_IN,
+    SIGN_IN_SUCCESS,
+    SIGN_IN_FAILURE,
+    SIGN_OUT,
     SHOW_SIGN_IN_CONFIRMATION_MODAL
 } from './types';
 
-export const login = () => ({
-    type: LOG_IN
-})
+import userApi from '../../api/userApi';
 
-export const logInSuccess = (user) => ({
-    type: LOG_IN_SUCCESS,
+// const signIn = () => ({
+//     type: SIGN_IN
+// })
+
+const signInSuccess = (user) => ({
+    type: SIGN_IN_SUCCESS,
     user
 })
 
-export const showSignInConfirmationModal = () => ({
+const showSignInConfirmationModal = () => ({
     type: SHOW_SIGN_IN_CONFIRMATION_MODAL
 })
 
-export const logInFailure = () => ({
-    type: LOG_IN_FAILURE
+const signInFailure = () => ({
+    type: SIGN_IN_FAILURE
 })
+
+
+export const signIn = (email, password) => {
+    return async dispatch => {
+        const data = await userApi.signIn(email, password);
+        console.log(data)
+        // axios
+        //     .post(`https://jsonplaceholder.typicode.com/todos`, {
+        //         title,
+        //         userId,
+        //         completed: false
+        //     })
+        //     .then(res => {
+        //         dispatch(signInSuccess(res.data));
+        //     })
+        //     .catch(err => {
+        //         dispatch(addTodoFailure(err.message));
+        //     });
+    };
+};

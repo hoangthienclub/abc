@@ -1,1 +1,1 @@
-export const BASE_URL = '127.9.9.1'
+export const BASE_URL_USER = 'https://api-dev.atollogy.saigonvalley.co/user'

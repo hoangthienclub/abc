@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground, TextInput, StyleSheet } from 'react-native';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
+import { View, Text, Image, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { 
-    login, 
-    logInSuccess, 
-    showSignInConfirmationModal, 
-    logInFailure 
+    signIn
 } from '../../actions/auth/actions';
-import * as api from '../../common/api';
+import userApi from '../../api/userApi';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'thien301194@gmail.com',
-            password: 'Aa123456?'
+            email: 'binhdang@test.com',
+            password: 'Binh@123456'
         };
     }
 
@@ -26,15 +21,9 @@ class Login extends Component {
         }
     };
 
-    onChangeText = (key, value) => {
-        this.setState({
-          [key]: value
-        })
-    }
-
-    login() {
+    login = () => {
         const { email, password } = this.state
-        this.props.login(email, password)
+        this.props.signIn(email, password)
     }
     
 
@@ -52,29 +41,35 @@ class Login extends Component {
                     </View>
                     <View style={{ flex: 2, flexDirection: 'column'}}>
                         <View style={{ flex: 1 }}>
-                            <Text>Username</Text>
+                            <Text>Email</Text>
                             <TextInput
-                                onChangeText={value => onChangeText(type, value)}
+                                onChangeText={(email) => this.setState({email})}
                                 style={ styles.input }
                                 secureTextEntry={ false }
                                 autoCapitalize='none'
                                 autoCorrect={false}
+                                value={ email }
+                                name="email"
                             />
                         </View>
                         <View style={{ flex: 1 }}>
                             <Text>Password</Text>
                             <TextInput
-                                onChangeText={value => onChangeText(type, value)}
+                                onChangeText={(password) => this.setState({password})}
                                 style={ styles.input }
-                                secureTextEntry={ false }
+                                secureTextEntry={ true }
                                 autoCapitalize='none'
                                 autoCorrect={false}
+                                value={ password }
+                                name="password"
                             />
                         </View>
                     </View>
                     <View style={{ flex: 1.5 }}>
                         <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                            <TouchableOpacity style={{ flex: 1 }}>
+                            <TouchableOpacity style={{ flex: 1 }}
+                                onPress={ this.login }
+                            >
                                 <View style={ styles.buttonLogin }>
                                     <Text style={{ fontSize: 20, color: "#fff" }}>Login</Text>
                                 </View>
@@ -94,18 +89,8 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: async(email, password) => {
-            try {
-                dispatch(login())
-                const data = await api.login(email, password);
-                console.log(data)
-                dispatch(logInSuccess(data.data))
-                dispatch(showSignInConfirmationModal())
-            }   
-            catch (err) {
-                console.log('errror from signIn: ', err)
-                dispatch(logInFailure(err))
-            }
+        signIn: (email, password) => {
+            dispatch(signIn(email, password));
         }
     }
 }

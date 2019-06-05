@@ -1,37 +1,30 @@
 import axios from 'axios';
 import _ from 'lodash';
-import { BASE_URL } from '../utils/constants';
+import { BASE_URL_USER } from '../utils/constants';
 // import { showErrorMessage } from '../containers/HomePage/actions'
 // import { clearAuthInfo } from '../containers/ProfileWrapper/actions'
 
 
 export const defaultOptions = {
-  baseURL: BASE_URL,
+  baseURL: BASE_URL_USER,
   method: 'GET',
   headers: {
     'Access-Control-Allow-Origin': '*'
   },
   accept: 'application/json'
 };
-export default function sendRequest(url, options = {}) {
-  const appState = JSON.parse(localStorage.getItem('appState'));
-
-  const authInfo = appState != null && appState.authInfo != null ? appState.authInfo : {};
-
-  if (_.get(authInfo, 'access_token')) {
-    defaultOptions.headers['Authorization'] = 'Bearer ' + _.get(authInfo, 'access_token');
-  }
-
+export default function sendRequest(baseURL = BASE_URL_USER, url, options = {}) {
   const { store } = defaultOptions;
-
+  defaultOptions.baseURL = baseURL;
   const cloneOptions = { ...defaultOptions }
   delete cloneOptions.store
-
+  console.log(url)
+  console.log(cloneOptions)
   return axios.request(url, { ...cloneOptions, ...options })
     .then(data => {
       if (_.get(data, ['data', 'code']) === 403) {
         // store.dispatch(showErrorMessage('Your session is expired, please login again!'));
-        setTimeout(() => {
+        setTimeout(() => {  
           store.dispatch(clearAuthInfo())
         }, 1500)
       }
