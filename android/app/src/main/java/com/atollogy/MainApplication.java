@@ -1,4 +1,4 @@
-package com.awesomeapp;
+package com.atollogy;
 
 import android.app.Application;
 
