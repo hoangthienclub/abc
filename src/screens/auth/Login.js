@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { 
     signIn
 } from '../../actions/auth/actions';
-import userApi from '../../api/userApi';
 
 class Login extends Component {
     constructor(props) {
@@ -23,9 +22,8 @@ class Login extends Component {
 
     login = () => {
         const { email, password } = this.state
-        this.props.signIn(email, password)
+        this.props.signIn(email, password);
     }
-    
 
     render() {
         const { email, password } = this.state;

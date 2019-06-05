@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { BASE_URL_USER } from '../utils/constants';
 // import { showErrorMessage } from '../containers/HomePage/actions'
 // import { clearAuthInfo } from '../containers/ProfileWrapper/actions'
+import { setNotification } from '../actions/app/actions';
 
 
 export const defaultOptions = {
@@ -28,7 +29,11 @@ export default function sendRequest(baseURL = BASE_URL_USER, url, options = {}) 
           store.dispatch(clearAuthInfo())
         }, 1500)
       }
-      return data
+      if (_.get(data, ['data', 'code']) === 500) {
+        const message = _.get(data, ['data', 'message'])
+        store.dispatch(setNotification('danger', message));
+      }
+      // return data
     })
     .catch(err => {
       if (defaultOptions.store) {

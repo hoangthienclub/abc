@@ -6,7 +6,6 @@ import {
 
 const initState = {
     notification: {
-        isShowing: false,
         type: 'success',
         message: null,
     },
@@ -16,10 +15,16 @@ const initState = {
 export default (state = initState, action) => {
     switch (action.type) {
         case SET_NOTIFICATION_DISPLAY:
-            return state.set('notification', action.payload || initialState.get('notification'))
+            return {
+                ...state,
+                notification: action.payload ||initialState.notification
+            }
        
         case SET_LOADING:
-            return state.set('showLoading', action.data);
+            return {
+                ...state,
+                showLoading: action.data
+            }
         
         default:
             return state;

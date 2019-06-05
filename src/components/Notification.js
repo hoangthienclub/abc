@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground, TextInput, StyleSheet, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { setNotification } from '../actions/app/actions';
+import FlashMessage from "react-native-flash-message";
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 class Notification extends React.Component {
+
+	componentDidUpdate(prevProps, prevState) {
+        const { message, type } = this.props.notification;
+        showMessage({
+            message,
+            type
+        });
+	}
     render () {
-        console.log(this.props.notification)
         return (
-            <View style={{
-                width: 200, height: 200, backgroundColor: 'red'
-            }}>
-                <Text>day la noi dung</Text>
+            <View style={{position: 'absolute', width: '100%'}}>
+                <View ref={"otherView1"} />
+                <View ref={"otherView2"} />
+                <View ref={"otherView3"} />
+                <FlashMessage position="top" />
             </View>
         )
     }
@@ -30,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = state => ({
-    notification: state.app
+    notification: state.app.notification
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);

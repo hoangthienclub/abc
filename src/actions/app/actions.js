@@ -2,7 +2,10 @@ import {
     SET_NOTIFICATION_DISPLAY,
 } from './types';
 
-export const setNotification = (data) => ({
+export const setNotification = (type, message) => ({
     type: SET_NOTIFICATION_DISPLAY,
-    payload: data
+    payload: {
+        type,
+        message
+    }
 })

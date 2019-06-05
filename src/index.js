@@ -11,9 +11,6 @@ import SplashScreen from 'react-native-splash-screen'
 class App extends Component {
 
     componentDidMount() {
-        // Axios.defaults.headers.common['Authorization'] = token;
-    	// do stuff while splash screen is shown
-        // After having done stuff (such as async tasks) hide the splash screen
         SplashScreen.hide();
     }
     render() {
@@ -28,8 +25,8 @@ class App extends Component {
         }
         return (
             <ImageBackground source={require('./assets/Background.png')} style={{ width:'100%', height: '100%' }}>
-                { loggedIn? <Home />: <Auth style={{ backgroundColor: 'transparent'}}/> }
                 <Notification />
+                { loggedIn? <Home />: <Auth style={{ backgroundColor: 'transparent'}}/> }
             </ImageBackground>
         )
     }
