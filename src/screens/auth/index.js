@@ -1,7 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
-import Register from './Register';
 import Login from './Login';
 import { createAppContainer } from "react-navigation";
 
@@ -14,9 +13,6 @@ const routes = createStackNavigator({
     },
     ResetPassword: {
         screen: ResetPassword
-    },
-    Register: {
-        screen: Register
     }
 }, {
     mode: 'modal',

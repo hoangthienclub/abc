@@ -4,7 +4,7 @@ import {
     SIGN_IN_FAILURE,
     SIGN_OUT,
     SHOW_SIGN_IN_CONFIRMATION_MODAL
-} from '../../actions/auth/types';
+} from '../actions/auth/types';
 
 const initState = {
     isAuthenticating: false,

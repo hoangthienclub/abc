@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import Auth from './screens/auth';
 import Home from './screens/home';
+import Notification from './components/Notification';
 import SplashScreen from 'react-native-splash-screen'
 // import Axios from 'axios';
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
         return (
             <ImageBackground source={require('./assets/Background.png')} style={{ width:'100%', height: '100%' }}>
                 { loggedIn? <Home />: <Auth style={{ backgroundColor: 'transparent'}}/> }
+                <Notification />
             </ImageBackground>
         )
     }
